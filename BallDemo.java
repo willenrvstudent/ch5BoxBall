@@ -20,6 +20,16 @@ public class BallDemo
         myCanvas = new Canvas("Ball Demo", 600, 500);
     }
 
+    public void boxBounce(){
+        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, myCanvas);
+        ball.draw();
+        
+           while(true) {
+            myCanvas.wait(50);           // small delay
+            ball.move();
+        }
+    }
+    
     /**
      * Simulate two bouncing balls
      */
