@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.geom.*;
+import java.util.Random;
 
 /**
  * Class BoxBall - a graphical ball that moves at a constant rate in
@@ -30,8 +31,8 @@ public class BoxBall
     private final int leftWall;            // x position of left Wall
     private final int rightWall;           // x position of right Wall
     private Canvas canvas;
-    private int ySpeed = 4 ;                // initial downward speed
-    private int xSpeed = 7;
+    private int ySpeed = (int) Math.random() * 7 +1;                // initial downward speed
+    private int xSpeed = (int) Math.random() * 7 +1;
 
     /**
      * Constructor for objects of class BoxBall
@@ -49,7 +50,6 @@ public class BoxBall
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
-        //groundPosition = groundPos;
         canvas = drawingCanvas;
         leftWall = 0;
         rightWall = 600;
@@ -88,25 +88,29 @@ public class BoxBall
         xPosition += xSpeed;
 
         // check if it has hit the ground
-//         if(yPosition >= (groundPosition - diameter) && ySpeed > 0) {
+//         if(yPosition >= (botoomWall - diameter) && ySpeed > 0) {
 //             yPosition = (int)(groundPosition - diameter);
 //             ySpeed = -ySpeed + ballDegradation; 
 //         }
 
         // WALL CHECKS
         if (xPosition < leftWall ) {
+            xPosition = 0;
             xSpeed = -xSpeed;
         }
         
-        if (xPosition > rightWall ) {
+        if(xPosition >= (rightWall - diameter) && ySpeed > 0) {
+            xPosition = (int)(rightWall - diameter);
             xSpeed = -xSpeed;
         }
         
         if (yPosition < topWall ) {
+            yPosition = 0;
             ySpeed = -ySpeed;
         }
         
-        if (yPosition > bottomWall ) {
+        if(yPosition >= (bottomWall - diameter) && ySpeed > 0) {
+            yPosition = (int)(bottomWall - diameter);
             ySpeed = -ySpeed;
         }
         

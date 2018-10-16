@@ -1,4 +1,7 @@
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.Random;
+
 
 /**
  * Class BallDemo - a short demonstration showing animation with the 
@@ -11,6 +14,7 @@ import java.awt.Color;
 public class BallDemo   
 {
     private Canvas myCanvas;
+    ArrayList<BoxBall> bouncingBalls = new ArrayList<>();
 
     /**
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
@@ -21,13 +25,52 @@ public class BallDemo
     }
 
     public void boxBounce(){
-        BoxBall ball = new BoxBall(50, 50, 16, Color.BLUE, myCanvas);
-        ball.draw();
+        Random rand = new Random();
         
-           while(true) {
-            myCanvas.wait(50);           // small delay
-            ball.move();
+        int ballsNum = rand.nextInt(10) + 1;
+     
+        myCanvas.setVisible(true);
+        
+        for(int i = 0; i < ballsNum; i++)
+        {
+        
+            
+            int red = rand.nextInt(128);
+            int green =  rand.nextInt(128);
+            int blue = rand.nextInt(128);
+            int diameter = rand.nextInt(26);
+            int xPos = rand.nextInt(600);
+            int yPos = rand.nextInt(500);
+            
+            Color newColor = new Color(red, green, blue);
+            
+            bouncingBalls.add(new BoxBall(xPos, yPos, diameter, newColor, myCanvas));
+            bouncingBalls.get(i).draw();    
+            
         }
+        
+        while(true)
+        {
+            for(int j = 0; j < bouncingBalls.size(); j++)
+            {
+                if(bouncingBalls.size() < 5)
+                {
+                    myCanvas.wait(3);
+                    bouncingBalls.get(j).move();
+                }
+                
+                else if(bouncingBalls.size() > 5)
+                {
+                    myCanvas.wait(10);
+                    bouncingBalls.get(j).move();
+                
+                }
+            }
+        
+        }
+        
+        
+        
     }
     
     /**
