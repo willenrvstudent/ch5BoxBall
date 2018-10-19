@@ -11,8 +11,10 @@ import java.util.Random;
  *
  * This movement can be initiated by repeated calls to the "move" method.
  * 
- * @author Bill Crosbie
+ * @author Willen O. Leal
+ * @version 2018.10.19
  * 
+ * @author Bill Crosbie
  * @version 2011.07.31
  */
 
@@ -34,6 +36,7 @@ public class BoxBall
     private int ySpeed = (int) Math.random() * 7 +1;                // initial downward speed
     private int xSpeed = (int) Math.random() * 7 +1;
 
+
     /**
      * Constructor for objects of class BoxBall
      *
@@ -41,10 +44,12 @@ public class BoxBall
      * @param yPos  the vertical coordinate of the ball
      * @param ballDiameter  the diameter (in pixels) of the ball
      * @param ballColor  the color of the ball
-     * @param drawingCanvas  the canvas to draw this ball on
+     * @param drawingCanvas  the canvas to draw this ball on the screen
+     * @param height the height of the canvas
+     * @param width the width of the canvas
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        Canvas drawingCanvas)
+                        Canvas drawingCanvas, int height,int width)
     {
         xPosition = xPos;
         yPosition = yPos;
@@ -52,9 +57,9 @@ public class BoxBall
         diameter = ballDiameter;
         canvas = drawingCanvas;
         leftWall = 0;
-        rightWall = 600;
+        rightWall = width;
         topWall = 0;
-        bottomWall = 500;
+        bottomWall = height;
     }
 
     /**
@@ -95,21 +100,21 @@ public class BoxBall
 
         // WALL CHECKS
         if (xPosition < leftWall ) {
-            xPosition = 0;
+            xPosition = leftWall;
             xSpeed = -xSpeed;
         }
         
-        if(xPosition >= (rightWall - diameter) && ySpeed > 0) {
+        if(xPosition >= (rightWall - diameter)){
             xPosition = (int)(rightWall - diameter);
             xSpeed = -xSpeed;
         }
         
         if (yPosition < topWall ) {
-            yPosition = 0;
+            yPosition = topWall;
             ySpeed = -ySpeed;
         }
         
-        if(yPosition >= (bottomWall - diameter) && ySpeed > 0) {
+        if(yPosition >= (bottomWall - diameter)){
             yPosition = (int)(bottomWall - diameter);
             ySpeed = -ySpeed;
         }

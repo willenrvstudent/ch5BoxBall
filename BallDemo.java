@@ -6,7 +6,10 @@ import java.util.Random;
 /**
  * Class BallDemo - a short demonstration showing animation with the 
  * Canvas class. 
- *
+ * 
+ * @author Willen O. Leal
+ * @version 2018.10.19
+ * 
  * @author Michael Kölling and David J. Barnes
  * @version 2011.07.31
  */
@@ -17,6 +20,7 @@ public class BallDemo
     ArrayList<BoxBall> bouncingBalls = new ArrayList<>();
 
     /**
+     * @Constructor
      * Create a BallDemo object. Creates a fresh canvas and makes it visible.
      */
     public BallDemo()
@@ -24,10 +28,15 @@ public class BallDemo
         myCanvas = new Canvas("Ball Demo", 600, 500);
     }
 
+    /**
+     * Generates an array of bouncing balls with a number of balls between 5 and 25. Then in the loop
+     * creates a new color for each ball for each iteration. Finally sets each ball in motion by iteracting
+     * through the list infinitely
+     */
     public void boxBounce(){
         Random rand = new Random();
         
-        int ballsNum = rand.nextInt(10) + 1;
+        int ballsNum = rand.nextInt((25-5) + 1) + 5;;
      
         myCanvas.setVisible(true);
         
@@ -38,13 +47,15 @@ public class BallDemo
             int red = rand.nextInt(128);
             int green =  rand.nextInt(128);
             int blue = rand.nextInt(128);
-            int diameter = rand.nextInt(26);
+            int diameter = rand.nextInt((25-10) + 1) + 10;
             int xPos = rand.nextInt(600);
             int yPos = rand.nextInt(500);
+            int height = 500;
+            int width = 600;
             
             Color newColor = new Color(red, green, blue);
             
-            bouncingBalls.add(new BoxBall(xPos, yPos, diameter, newColor, myCanvas));
+            bouncingBalls.add(new BoxBall(xPos, yPos, diameter, newColor, myCanvas, height, width));
             bouncingBalls.get(i).draw();    
             
         }
