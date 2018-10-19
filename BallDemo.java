@@ -18,6 +18,9 @@ public class BallDemo
 {
     private Canvas myCanvas;
     ArrayList<BoxBall> bouncingBalls = new ArrayList<>();
+    private int height = 500;
+    private int width = 600;
+            
 
     /**
      * @Constructor
@@ -25,7 +28,7 @@ public class BallDemo
      */
     public BallDemo()
     {
-        myCanvas = new Canvas("Ball Demo", 600, 500);
+        myCanvas = new Canvas("Ball Demo", width, height);
     }
 
     /**
@@ -48,10 +51,8 @@ public class BallDemo
             int green =  rand.nextInt(128);
             int blue = rand.nextInt(128);
             int diameter = rand.nextInt((25-10) + 1) + 10;
-            int xPos = rand.nextInt(600);
-            int yPos = rand.nextInt(500);
-            int height = 500;
-            int width = 600;
+            int xPos = rand.nextInt(width);
+            int yPos = rand.nextInt(height);
             
             Color newColor = new Color(red, green, blue);
             
