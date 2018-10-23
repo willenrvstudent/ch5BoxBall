@@ -76,6 +76,11 @@ public class BallDemo
         while(true)
         { 
           
+          myCanvas.drawLine(leftWall, bottomWall, rightWall, bottomWall);
+          myCanvas.drawLine(leftWall, topWall, rightWall, topWall);
+          myCanvas.drawLine(leftWall, topWall, leftWall, bottomWall);
+          myCanvas.drawLine(rightWall, topWall, rightWall, bottomWall);
+          
           if(index < bouncingBalls.size())
           { 
             bouncingBalls.get(index).move();
