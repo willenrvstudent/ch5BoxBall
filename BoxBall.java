@@ -50,17 +50,17 @@ public class BoxBall
      * @param width the width of the canvas
      */
     public BoxBall(int xPos, int yPos, int ballDiameter, Color ballColor,
-                        Canvas drawingCanvas, int height,int width)
+                        Canvas drawingCanvas, int bW,int tW, int lW, int rW)
     {
         xPosition = xPos;
         yPosition = yPos;
         color = ballColor;
         diameter = ballDiameter;
         canvas = drawingCanvas;
-        leftWall = 0;
-        rightWall = width;
-        topWall = 0;
-        bottomWall = height;
+        leftWall = lW;
+        rightWall = rW;
+        topWall = tW;
+        bottomWall = bW;
     }
 
     /**

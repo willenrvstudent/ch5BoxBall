@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -43,6 +44,16 @@ public class BallDemo
      
         myCanvas.setVisible(true);
         
+        int leftWall = 50;
+        int topWall = 50;
+        int rightWall = 550;
+        int bottomWall = 450;
+        
+        myCanvas.drawLine(leftWall, bottomWall, rightWall, bottomWall);
+        myCanvas.drawLine(leftWall, topWall, rightWall, topWall);
+        myCanvas.drawLine(leftWall, topWall, leftWall, bottomWall);
+        myCanvas.drawLine(rightWall, topWall, rightWall, bottomWall);
+        
         for(int i = 0; i < ballsNum; i++)
         {
         
@@ -56,7 +67,7 @@ public class BallDemo
             
             Color newColor = new Color(red, green, blue);
             
-            bouncingBalls.add(new BoxBall(xPos, yPos, diameter, newColor, myCanvas, height, width));
+            bouncingBalls.add(new BoxBall(xPos, yPos, diameter, newColor, myCanvas, bottomWall, topWall , leftWall, rightWall));
             bouncingBalls.get(i).draw();    
             
         }
