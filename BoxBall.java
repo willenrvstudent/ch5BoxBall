@@ -33,8 +33,9 @@ public class BoxBall
     private final int leftWall;            // x position of left Wall
     private final int rightWall;           // x position of right Wall
     private Canvas canvas;
-    private int ySpeed = (int) Math.random() * 7 +1;                // initial downward speed
-    private int xSpeed = (int) Math.random() * 7 +1;
+    private Random randy = new Random();
+    private int ySpeed = randy.nextInt((13-7) + 1) + 7;                // initial downward speed
+    private int xSpeed = randy.nextInt((13-7) + 1) + 7;
 
 
     /**

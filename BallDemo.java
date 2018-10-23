@@ -61,24 +61,22 @@ public class BallDemo
             
         }
         
+        int index = 0;
         while(true)
-        {
-            for(int j = 0; j < bouncingBalls.size(); j++)
-            {
-                if(bouncingBalls.size() < 5)
-                {
-                    myCanvas.wait(3);
-                    bouncingBalls.get(j).move();
-                }
-                
-                else if(bouncingBalls.size() > 5)
-                {
-                    myCanvas.wait(10);
-                    bouncingBalls.get(j).move();
-                
-                }
-            }
-        
+        { 
+          
+          if(index < bouncingBalls.size())
+          { 
+            bouncingBalls.get(index).move();
+            index++;
+          }
+          
+          else
+          {
+            index = 0;
+          }
+          
+          myCanvas.wait(1);
         }
         
         
